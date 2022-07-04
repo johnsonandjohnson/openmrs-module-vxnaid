@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~  This Source Code Form is subject to the terms of the Mozilla Public License,
+  ~  v. 2.0. If a copy of the MPL was not distributed with this file, You can
+  ~  obtain one at http://mozilla.org/MPL/2.0/. OpenMRS is also distributed under
+  ~  the terms of the Healthcare Disclaimer located at http://openmrs.org/license.
+  ~  <p>
+  ~  Copyright (C) OpenMRS Inc. OpenMRS is a registered trademark and the OpenMRS
+  ~  graphic logo is a trademark of OpenMRS Inc.
+  -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="cfl-vmp-ConfigureVmpPatientDashboardAppsActivatorStep"
+          class="org.openmrs.module.vxnaid.api.activator.impl.ConfigureVmpPatientDashboardAppsActivatorStep"/>
+    <bean id="cfl-vmp-DisableDefaultCFLApps"
+          class="org.openmrs.module.vxnaid.api.activator.impl.DisableDefaultCFLApps">
+        <property name="appFrameworkService" ref="appFrameworkService"/>
+    </bean>
+    <bean id="cfl-vmp-InstallMetadataBundles"
+          class="org.openmrs.module.vxnaid.api.activator.impl.InstallMetadataBundles"/>
+
+    <bean id="cfl-vmp-DoseCompliancy" class="org.openmrs.module.vxnaid.reporting.report.DoseCompliancy"/>
+    <bean id="cfl-vmp-DoseCompliancyReportBundle"
+          class="org.openmrs.module.vxnaid.api.metadata.DoseCompliancyReportBundle">
+        <constructor-arg name="dbSessionFactory" ref="dbSessionFactory"/>
+        <constructor-arg name="doseCompliancy" ref="cfl-vmp-DoseCompliancy"/>
+    </bean>
+
+    <bean id="cfl-vmp-DoseCompliancySummaryReport"
+          class="org.openmrs.module.vxnaid.reporting.report.DoseCompliancySummaryReport"/>
+    <bean id="cfl-vmp-DoseCompliancySummaryReportBundle"
+          class="org.openmrs.module.vxnaid.api.metadata.DoseCompliancySummaryReportBundle">
+        <constructor-arg name="dbSessionFactory" ref="dbSessionFactory"/>
+        <constructor-arg name="doseCompliancySummaryReport" ref="cfl-vmp-DoseCompliancySummaryReport"/>
+    </bean>
+
+    <bean id="cfl-vmp-DoseEvolution" class="org.openmrs.module.vxnaid.reporting.report.DoseEvolution"/>
+    <bean id="cfl-vmp-DoseEvolutionReportBundle"
+          class="org.openmrs.module.vxnaid.api.metadata.DoseEvolutionReportBundle">
+        <constructor-arg name="dbSessionFactory" ref="dbSessionFactory"/>
+        <constructor-arg name="doseEvolution" ref="cfl-vmp-DoseEvolution"/>
+    </bean>
+
+    <bean id="cfl-vmp-DoseEvolutionSummaryAggregation"
+          class="org.openmrs.module.vxnaid.reporting.report.DoseEvolutionSummaryAggregation"/>
+    <bean id="cfl-vmp-DoseEvolutionSummaryAggregationReportBundle"
+          class="org.openmrs.module.vxnaid.api.metadata.DoseEvolutionSummaryAggregationReportBundle">
+        <constructor-arg name="dbSessionFactory" ref="dbSessionFactory"/>
+        <constructor-arg name="doseEvolutionSummaryAggregation" ref="cfl-vmp-DoseEvolutionSummaryAggregation"/>
+    </bean>
+
+    <bean id="cfl-vmp-DoseStatus" class="org.openmrs.module.vxnaid.reporting.report.DoseStatus"/>
+    <bean id="cfl-vmp-DoseStatusReportBundle"
+          class="org.openmrs.module.vxnaid.api.metadata.DoseStatusReportBundle">
+        <constructor-arg name="dbSessionFactory" ref="dbSessionFactory"/>
+        <constructor-arg name="doseStatus" ref="cfl-vmp-DoseStatus"/>
+    </bean>
+
+    <bean id="cfl-vmp-DoseStatusSummaryReport"
+          class="org.openmrs.module.vxnaid.reporting.report.DoseStatusSummaryReport"/>
+    <bean id="cfl-vmp-DoseStatusSummaryReportBundle"
+          class="org.openmrs.module.vxnaid.api.metadata.DoseStatusSummaryReportBundle">
+        <constructor-arg name="dbSessionFactory" ref="dbSessionFactory"/>
+        <constructor-arg name="doseStatusSummaryReport" ref="cfl-vmp-DoseStatusSummaryReport"/>
+    </bean>
+
+    <bean id="cfl-vmp-DoseVisitsUpcoming" class="org.openmrs.module.vxnaid.reporting.report.DoseVisitsUpcoming"/>
+    <bean id="cfl-vmp-DoseVisitsUpcomingReportBundle"
+          class="org.openmrs.module.vxnaid.api.metadata.DoseVisitsUpcomingReportBundle">
+        <constructor-arg name="dbSessionFactory" ref="dbSessionFactory"/>
+        <constructor-arg name="doseVisitsUpcoming" ref="cfl-vmp-DoseVisitsUpcoming"/>
+    </bean>
+
+    <bean id="cfl-vmp-DoseVisitsUpcomingSummaryReport"
+          class="org.openmrs.module.vxnaid.reporting.report.DoseVisitsUpcomingSummaryReport"/>
+    <bean id="cfl-vmp-DoseVisitsUpcomingSummaryReportBundle"
+          class="org.openmrs.module.vxnaid.api.metadata.DoseVisitsUpcomingSummaryReportBundle">
+        <constructor-arg name="dbSessionFactory" ref="dbSessionFactory"/>
+        <constructor-arg name="doseVisitsUpcomingSummaryReport" ref="cfl-vmp-DoseVisitsUpcomingSummaryReport"/>
+    </bean>
+
+    <bean id="cfl-vmp-RetireDefaultEncounterTypes"
+          class="org.openmrs.module.vxnaid.api.metadata.RetireDefaultEncounterTypesBundle"/>
+    <bean id="cfl-vmp-RetireDefaultPersonAttributeTypes"
+          class="org.openmrs.module.vxnaid.api.metadata.RetireDefaultPersonAttributeTypesBundle"/>
+    <bean id="cfl-vmp-RetirePatientIdentifiersBundle"
+          class="org.openmrs.module.vxnaid.api.metadata.RetirePatientIdentifiersBundle"/>
+    <bean id="cfl-vmp-VisitReminderMetadata"
+          class="org.openmrs.module.vxnaid.api.metadata.VisitReminderMetadata">
+        <constructor-arg name="dbSessionFactory" ref="dbSessionFactory"/>
+    </bean>
+    <bean id="cfl-vmp-RetireHIVProgramFormBundle"
+          class="org.openmrs.module.vxnaid.api.metadata.RetireHIVProgramFormBundle"/>
+    <bean id="cfl-vmp-RolesMetadataBundle" class="org.openmrs.module.vxnaid.api.metadata.RolesMetadataBundle"/>
+    <bean id="cfl-vmp-InitialGlobalPropertiesMetadata"
+          class="org.openmrs.module.vxnaid.api.metadata.InitialGlobalPropertiesMetadata"/>
+    <bean id="cfl-vmp-OpenMRSConfigurationBundle"
+          class="org.openmrs.module.vxnaid.api.metadata.OpenMRSConfigurationBundle"/>
+</beans>

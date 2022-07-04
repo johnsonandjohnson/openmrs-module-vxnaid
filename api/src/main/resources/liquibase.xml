@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~  This Source Code Form is subject to the terms of the Mozilla Public License,
+  ~  v. 2.0. If a copy of the MPL was not distributed with this file, You can
+  ~  obtain one at http://mozilla.org/MPL/2.0/. OpenMRS is also distributed under
+  ~  the terms of the Healthcare Disclaimer located at http://openmrs.org/license.
+  ~  <p>
+  ~  Copyright (C) OpenMRS Inc. OpenMRS is a registered trademark and the OpenMRS
+  ~  graphic logo is a trademark of OpenMRS Inc.
+  -->
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
+                  http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+
+    <!--
+        Here are many changeSets which add multiple records to same table.
+        For this kind of changeSets only the first records is checked to see
+        if the changeSets should be run or not - it is assumed that any system
+        which runs before a changeSets ware added already has either all data
+        from the changeSets or none.
+        E.g.: if system has 'Dosing' visit type, it is assumed that it also
+        has 'Other' so the changeSets cfl-vmp-initial-setup-2 will not run.
+     -->
+
+    <changeSet id="cfl-vmp-initial-setup-1" author="Connect for Life">
+        <comment>Update OpenMRS ID patient_identifier_type uniqueness_behavior and idgen_seq_id_gen min length.</comment>
+        <sql><![CDATA[
+            UPDATE openmrs.patient_identifier_type SET
+            uniqueness_behavior = 'NON_UNIQUE', date_changed = NOW(), changed_by = 2, validator = NULL
+            WHERE uuid = '05a29f94-c0ed-11e2-94be-8c13b969e334';
+
+            UPDATE openmrs.idgen_seq_id_gen SET min_length = 0
+            WHERE id = (SELECT id FROM openmrs.idgen_identifier_source WHERE name = 'Generator for OpenMRS ID');
+        ]]></sql>
+    </changeSet>
+</databaseChangeLog>
