@@ -1,0 +1,80 @@
+<!--
+  ~  This Source Code Form is subject to the terms of the Mozilla Public License,
+  ~  v. 2.0. If a copy of the MPL was not distributed with this file, You can
+  ~  obtain one at http://mozilla.org/MPL/2.0/. OpenMRS is also distributed under
+  ~  the terms of the Healthcare Disclaimer located at http://openmrs.org/license.
+  ~  <p>
+  ~  Copyright (C) OpenMRS Inc. OpenMRS is a registered trademark and the OpenMRS
+  ~  graphic logo is a trademark of OpenMRS Inc.
+  -->
+
+<org.openmrs.module.emrapi.metadata.MetadataPackagesConfig>
+    <packages>
+        <org.openmrs.module.emrapi.metadata.MetadataPackageConfig>
+            <filenameBase>02_VMP_Patient_Dashboard_Actions</filenameBase>
+            <groupUuid>cb15f009-97a2-4bb3-86a7-afc9f9eaf9b3</groupUuid>
+            <version>2</version>
+            <importMode>MIRROR</importMode>
+        </org.openmrs.module.emrapi.metadata.MetadataPackageConfig>
+        <org.openmrs.module.emrapi.metadata.MetadataPackageConfig>
+            <filenameBase>03_VMP_Configure_Metadata_Apps</filenameBase>
+            <groupUuid>3b6bad6d-b6e4-4111-a8b1-1ffddeba835d</groupUuid>
+            <version>2</version>
+            <importMode>MIRROR</importMode>
+        </org.openmrs.module.emrapi.metadata.MetadataPackageConfig>
+        <org.openmrs.module.emrapi.metadata.MetadataPackageConfig>
+            <filenameBase>04_CfL_Reporting_UI_Apps</filenameBase>
+            <groupUuid>5bf15e40-fab7-4345-b733-4b8c9106a17b</groupUuid>
+            <version>2</version>
+            <importMode>MIRROR</importMode>
+        </org.openmrs.module.emrapi.metadata.MetadataPackageConfig>
+        <org.openmrs.module.emrapi.metadata.MetadataPackageConfig>
+            <filenameBase>05_Device_Attribute_Types</filenameBase>
+            <groupUuid>0d9a8e72-508b-4d40-b141-2b60183743d2</groupUuid>
+            <version>1</version>
+            <importMode>MIRROR</importMode>
+        </org.openmrs.module.emrapi.metadata.MetadataPackageConfig>
+        <org.openmrs.module.emrapi.metadata.MetadataPackageConfig>
+            <filenameBase>06_Visit_Types</filenameBase>
+            <groupUuid>ac0ee001-ec63-41fb-949a-31a7e786e496</groupUuid>
+            <version>2</version>
+            <importMode>MIRROR</importMode>
+        </org.openmrs.module.emrapi.metadata.MetadataPackageConfig>
+        <org.openmrs.module.emrapi.metadata.MetadataPackageConfig>
+            <filenameBase>07_Visit_Attribute_Types</filenameBase>
+            <groupUuid>5486afa8-b64c-4cbb-a11a-bdce6c3afc67</groupUuid>
+            <version>1</version>
+            <importMode>MIRROR</importMode>
+        </org.openmrs.module.emrapi.metadata.MetadataPackageConfig>
+        <org.openmrs.module.emrapi.metadata.MetadataPackageConfig>
+            <filenameBase>08_Encounter_Types</filenameBase>
+            <groupUuid>49c0f3ea-f5ff-4fd3-a1dd-be4ff874b846</groupUuid>
+            <version>1</version>
+            <importMode>MIRROR</importMode>
+        </org.openmrs.module.emrapi.metadata.MetadataPackageConfig>
+        <org.openmrs.module.emrapi.metadata.MetadataPackageConfig>
+            <filenameBase>09_License_Types</filenameBase>
+            <groupUuid>5dc791f9-2e43-4921-8a7c-7a370dec3749</groupUuid>
+            <version>1</version>
+            <importMode>MIRROR</importMode>
+        </org.openmrs.module.emrapi.metadata.MetadataPackageConfig>
+        <org.openmrs.module.emrapi.metadata.MetadataPackageConfig>
+            <filenameBase>11_Person_Attribute_Types</filenameBase>
+            <groupUuid>e4beac84-7c05-4c94-883f-161d88c6f90b</groupUuid>
+            <version>1</version>
+            <importMode>MIRROR</importMode>
+        </org.openmrs.module.emrapi.metadata.MetadataPackageConfig>
+        <org.openmrs.module.emrapi.metadata.MetadataPackageConfig>
+            <filenameBase>12_VMP_Patient_Registration_Form</filenameBase>
+            <groupUuid>a4bebe87-2856-4868-9378-414345a5b6b0</groupUuid>
+            <version>2</version>
+            <importMode>MIRROR</importMode>
+        </org.openmrs.module.emrapi.metadata.MetadataPackageConfig>
+        <org.openmrs.module.emrapi.metadata.MetadataPackageConfig>
+            <filenameBase>13_VMP_Concepts</filenameBase>
+            <groupUuid>79fd5d21-9442-4c42-be4d-4b2aa5c58fc8</groupUuid>
+            <version>1</version>
+            <importMode>MIRROR</importMode>
+        </org.openmrs.module.emrapi.metadata.MetadataPackageConfig>
+    </packages>
+</org.openmrs.module.emrapi.metadata.MetadataPackagesConfig>
