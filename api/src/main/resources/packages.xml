@@ -13,7 +13,7 @@
         <org.openmrs.module.emrapi.metadata.MetadataPackageConfig>
             <filenameBase>02_VMP_Patient_Dashboard_Actions</filenameBase>
             <groupUuid>cb15f009-97a2-4bb3-86a7-afc9f9eaf9b3</groupUuid>
-            <version>2</version>
+            <version>3</version>
             <importMode>MIRROR</importMode>
         </org.openmrs.module.emrapi.metadata.MetadataPackageConfig>
         <org.openmrs.module.emrapi.metadata.MetadataPackageConfig>

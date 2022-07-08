@@ -17,11 +17,11 @@ import org.openmrs.module.metadatadeploy.bundle.VersionedMetadataBundle;
 import static java.util.Optional.ofNullable;
 
 /**
- * Retires Encounter Types from default CFL configuration which are not used by the VMP.
+ * Retires Encounter Types from default CFL configuration which are not used by the Vxnaid.
  */
 public class RetireDefaultEncounterTypesBundle extends VersionedMetadataBundle {
   private static final String ATTACHMENT_UPLOAD_ENCOUNTER_TYPE_UUID = "5021b1a1-e7f6-44b4-ba02-da2f2bcf8718";
-  private static final String COMMON_RETIRE_REASON = "Encounter Type not needed in VMP.";
+  private static final String COMMON_RETIRE_REASON = "Encounter Type not needed in Vxnaid.";
 
   @Override
   public int getVersion() {

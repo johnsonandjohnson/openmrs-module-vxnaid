@@ -20,12 +20,12 @@ import static java.util.Arrays.asList;
 import static java.util.Optional.ofNullable;
 
 /**
- * Retires Patient Identifier Types from default CFL configuration which are not used by the VMP.
+ * Retires Patient Identifier Types from default CFL configuration which are not used by the Vxnaid.
  */
 public class RetirePatientIdentifiersBundle extends VersionedMetadataBundle {
   private static final List<String> PATIENT_IDENTIFIER_TYPE_TO_RETIRE_NAMES =
       asList("Old Identification Number", "OpenEMPI ID", "OpenMRS Identification Number");
-  private static final String COMMON_RETIRE_REASON = "Person Identifier not needed in VMP.";
+  private static final String COMMON_RETIRE_REASON = "Person Identifier not needed in Vxnaid.";
 
   @Override
   public int getVersion() {

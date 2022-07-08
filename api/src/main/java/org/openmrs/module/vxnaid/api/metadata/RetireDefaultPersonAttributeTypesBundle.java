@@ -20,13 +20,13 @@ import static java.util.Arrays.asList;
 import static java.util.Optional.ofNullable;
 
 /**
- * Retires Person Attribute Types from default CFL configuration which are not used by the VMP.
+ * Retires Person Attribute Types from default CFL configuration which are not used by the Vxnaid.
  */
 public class RetireDefaultPersonAttributeTypesBundle extends VersionedMetadataBundle {
   private static final List<String> PERSON_ATTRIBUTE_TYPES_TO_RETIRE =
       asList("Gender Identity", "Nationality", "City of current residence", "City of origin", "Education degree", "Sector",
           "Job");
-  private static final String COMMON_RETIRE_REASON = "Attribute not needed in VMP.";
+  private static final String COMMON_RETIRE_REASON = "Attribute not needed in Vxnaid.";
 
   @Override
   public int getVersion() {

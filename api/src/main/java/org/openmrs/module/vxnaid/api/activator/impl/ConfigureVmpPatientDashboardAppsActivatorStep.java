@@ -25,7 +25,7 @@ import static org.openmrs.module.vxnaid.api.util.VmpPatientDashboardAppsConstant
 public class ConfigureVmpPatientDashboardAppsActivatorStep implements ModuleActivatorStep {
 
   /**
-   * The list of extensions which should be disabled for VMP
+   * The list of extensions which should be disabled for Vxnaid
    */
   private static final List<String> EXTENSION_IDS = Arrays.asList(COREAPPS_DELETE_PATIENT_EXT);
 

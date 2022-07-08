@@ -28,7 +28,7 @@ public class RetireHIVProgramFormBundle extends VersionedMetadataBundle {
       asList("f1c23f25-20e1-4503-b09e-116aba0a6063", "b3af129b-90c9-4f84-966e-f4f9515083e6");
   private static final List<String> HIV_PROGRAM_FORMS_UUIDS =
       Arrays.asList("ad796f8c-b966-11eb-9ad8-0242ac120002", "39258edb-92c5-11eb-bf66-0242ac120002");
-  private static final String HIV_PROGRAM_RETIRE_REASON = "HIV Program not needed in VMP.";
+  private static final String HIV_PROGRAM_RETIRE_REASON = "HIV Program not needed in Vxnaid.";
 
   @Override
   public int getVersion() {

@@ -23,7 +23,7 @@ public class CflDistributionVmpModuleActivator extends BaseModuleActivator {
 
   @Override
   public void started() {
-    log.info("Started Cfl Distribution Vxnaid Module");
+    log.info("Started Vxnaid Distribution Module");
     try {
       MetadataUtil.setupStandardMetadata(getClass().getClassLoader());
     } catch (Exception e) {
@@ -33,6 +33,6 @@ public class CflDistributionVmpModuleActivator extends BaseModuleActivator {
 
   @Override
   public void stopped() {
-    log.info("Shutting down Cfl Distribution VMP Module");
+    log.info("Shutting down Vxnaid Distribution Module");
   }
 }
