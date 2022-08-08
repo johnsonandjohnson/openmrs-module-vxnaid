@@ -67,7 +67,7 @@
         <org.openmrs.module.emrapi.metadata.MetadataPackageConfig>
             <filenameBase>12_VMP_Patient_Registration_Form</filenameBase>
             <groupUuid>a4bebe87-2856-4868-9378-414345a5b6b0</groupUuid>
-            <version>2</version>
+            <version>3</version>
             <importMode>MIRROR</importMode>
         </org.openmrs.module.emrapi.metadata.MetadataPackageConfig>
         <org.openmrs.module.emrapi.metadata.MetadataPackageConfig>
