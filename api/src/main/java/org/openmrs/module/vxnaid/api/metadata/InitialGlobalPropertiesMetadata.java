@@ -114,27 +114,100 @@ public class InitialGlobalPropertiesMetadata extends VersionedMetadataBundle {
   private static final String BIOMETRIC_API_CONFIG_NAME = "biometric.api.config.main";
   private static final String BIOMETRIC_API_CONFIG_DESC = "";
   private static final String BIOMETRIC_API_CONFIG_INIT_VALUE = "{\n" +
-      "  \"syncScope\": \"site\",\n" +
-      "  \"operatorCredentialsRetentionTime\": 86400000,\n" +
-      "  \"operatorOfflineSessionTimeout\": 86400000,\n" +
-      "  \"vaccine\": [{\"name\": \"\", \"manufacturers\": \"\"}],\n" +
-      "  \"canUseDifferentManufacturers\": null,\n" +
-      "  \"manufacturers\": [{\"name\": \"\", \"barcodeRegex\": \"\"}],\n" +
-      "  \"personLanguages\": [{\"name\": \"English\"}],\n" +
-      "  \"authSteps\": [{\n" +
-      "      \"mandatory\": false,\n" +
-      "      \"type\": \"id_card\"\n" +
-      "    },\n" +
-      "    {\n" +
-      "      \"mandatory\": false,\n" +
-      "      \"type\": \"phone\"\n" +
-      "    },\n" +
-      "    {\n" +
-      "      \"mandatory\": false,\n" +
-      "      \"type\": \"iris_scan\"\n" +
-      "    }],\n" +
-      "  \"irisScore\": null,\n" +
-      "  \"addressFields\": {}\n" +
+      "\"syncScope\":\"site\",\n" +
+      "   \"operatorCredentialsRetentionTime\":86400000,\n" +
+      "   \"operatorOfflineSessionTimeout\":86400000,\n" +
+      "   \"vaccine\":[\n" +
+      "      {\n" +
+      "         \"name\":\"Vacc1\",\n" +
+      "         \"manufacturers\":[\n" +
+      "            \"JNJ\"\n" +
+      "         ]\n" +
+      "      }\n" +
+      "   ],\n" +
+      "   \"canUseDifferentManufacturers\":true,\n" +
+      "   \"manufacturers\":[\n" +
+      "      {\n" +
+      "         \"name\":\"JNJ\",\n" +
+      "         \"barcodeRegex\":\".*\"\n" +
+      "      }\n" +
+      "   ],\n" +
+      "   \"personLanguages\":[\n" +
+      "      {\n" +
+      "         \"name\":\"English\"\n" +
+      "      }\n" +
+      "   ],\n" +
+      "   \"authSteps\":[\n" +
+      "      {\n" +
+      "         \"mandatory\":false,\n" +
+      "         \"type\":\"id_card\"\n" +
+      "      },\n" +
+      "      {\n" +
+      "         \"mandatory\":false,\n" +
+      "         \"type\":\"phone\"\n" +
+      "      },\n" +
+      "      {\n" +
+      "         \"mandatory\":false,\n" +
+      "         \"type\":\"iris_scan\"\n" +
+      "      }\n" +
+      "   ],\n" +
+      "   \"irisScore\":50,\n" +
+      "   \"addressFields\":{\n" +
+      "      \"Belgium\":[\n" +
+      "         {\n" +
+      "            \"field\":\"cityVillage\",\n" +
+      "            \"type\":\"DROPDOWN\",\n" +
+      "            \"name\":\"City\",\n" +
+      "            \"displayOrder\":1\n" +
+      "         },\n" +
+      "         {\n" +
+      "            \"field\":\"stateProvince\",\n" +
+      "            \"type\":\"DROPDOWN\",\n" +
+      "            \"name\":\"Postalcode\",\n" +
+      "            \"displayOrder\":2\n" +
+      "         },\n" +
+      "         {\n" +
+      "            \"field\":\"address1\",\n" +
+      "            \"type\":\"FREE_INPUT\",\n" +
+      "            \"name\":\"Street\",\n" +
+      "            \"displayOrder\":3\n" +
+      "         },\n" +
+      "         {\n" +
+      "            \"field\":\"address2\",\n" +
+      "            \"type\":\"FREE_INPUT\",\n" +
+      "            \"name\":\"Number\",\n" +
+      "            \"displayOrder\":4\n" +
+      "         }\n" +
+      "      ],\n" +
+      "      \"United States of America\":[\n" +
+      "         {\n" +
+      "            \"field\":\"cityVillage\",\n" +
+      "            \"type\":\"DROPDOWN\",\n" +
+      "            \"name\":\"State\",\n" +
+      "            \"displayOrder\":1\n" +
+      "         },\n" +
+      "         {\n" +
+      "            \"field\":\"stateProvince\",\n" +
+      "            \"type\":\"DROPDOWN\",\n" +
+      "            \"name\":\"City\",\n" +
+      "            \"displayOrder\":2\n" +
+      "         },\n" +
+      "         {\n" +
+      "            \"field\":\"address1\",\n" +
+      "            \"type\":\"FREE_INPUT\",\n" +
+      "            \"name\":\"Postcode\",\n" +
+      "            \"displayOrder\":3\n" +
+      "         },\n" +
+      "         {\n" +
+      "            \"field\":\"address2\",\n" +
+      "            \"type\":\"FREE_INPUT\",\n" +
+      "            \"name\":\"Street\",\n" +
+      "            \"displayOrder\":4\n" +
+      "         }\n" +
+      "      ]\n" +
+      "   },\n" +
+      "   \"allowManualParticipantIDEntry\":true,\n" +
+      "   \"participantIDRegex\":\"\"\n" +
       "}";
 
   private static final String BIOMETRIC_API_CONFIG_VERSION_NAME = "biometric.api.config.version";

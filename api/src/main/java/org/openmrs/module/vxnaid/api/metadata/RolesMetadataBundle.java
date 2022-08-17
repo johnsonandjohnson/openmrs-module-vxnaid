@@ -13,6 +13,9 @@ package org.openmrs.module.vxnaid.api.metadata;
 import org.openmrs.module.metadatadeploy.bundle.CoreConstructors;
 import org.openmrs.module.metadatadeploy.bundle.VersionedMetadataBundle;
 
+import java.util.Arrays;
+import java.util.HashSet;
+
 import static java.util.Collections.emptySet;
 import static java.util.Collections.singleton;
 
@@ -30,6 +33,8 @@ public class RolesMetadataBundle extends VersionedMetadataBundle {
   @Override
   protected void installNewVersion() {
     install(CoreConstructors.role("Operator", "", emptySet(), emptySet()));
-    install(CoreConstructors.role("Sync Admin", "", singleton("Privilege Level: Doctor"), emptySet()));
+    install(CoreConstructors.role("Sync Admin", "", singleton("Privilege Level: Doctor"), new HashSet<>(
+        Arrays.asList("Get Devices", "Manage Devices", "Get Device Attribute Types", "Manage Device Attribute Types",
+            "Get Licenses", "Get License Types"))));
   }
 }
