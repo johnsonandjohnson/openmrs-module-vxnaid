@@ -10,15 +10,12 @@
 
 package org.openmrs.module.vxnaid.reporting.report;
 
-import org.openmrs.api.context.Context;
-import org.openmrs.module.vxnaid.reporting.report.util.VMPBaseReportManager;
-import org.openmrs.module.reporting.dataset.definition.SqlDataSetDefinition;
-import org.openmrs.module.reporting.dataset.definition.service.DataSetDefinitionService;
 import org.openmrs.module.reporting.evaluation.parameter.Parameter;
 import org.openmrs.module.reporting.report.ReportDesign;
 import org.openmrs.module.reporting.report.ReportDesignResource;
 import org.openmrs.module.reporting.report.definition.ReportDefinition;
 import org.openmrs.module.reporting.report.util.ReportUtil;
+import org.openmrs.module.vxnaid.reporting.report.util.VMPBaseReportManager;
 
 import java.util.List;
 
@@ -26,6 +23,12 @@ import static java.util.Collections.emptyList;
 import static java.util.Collections.singletonList;
 
 public class DoseCompliancySummaryReport extends VMPBaseReportManager {
+  private static final String DATA_SET_NAME = "DoseCompliancyAggregate";
+
+  protected DoseCompliancySummaryReport() {
+    super("815c6883-78f9-4774-9d76-8dd25244b855", DATA_SET_NAME);
+  }
+
   @Override
   public String getUuid() {
     return "480fdc06-39cb-4fd4-993e-3d29585b1db9";
@@ -50,7 +53,7 @@ public class DoseCompliancySummaryReport extends VMPBaseReportManager {
   public List<ReportDesign> constructReportDesigns(ReportDefinition reportDefinition) {
     final ReportDesign design = createExcelTemplateDesign();
     design.setReportDefinition(reportDefinition);
-    design.addPropertyValue("repeatingSections", "sheet:2,row:2,dataset:DoseCompliancyAggregate");
+    design.addPropertyValue("repeatingSections", "sheet:2,row:2,dataset:" + DATA_SET_NAME);
 
     final ReportDesignResource resource = createXLSXReportDesignResource();
     resource.setName("DoseCompliancyAggTemplate");
@@ -62,26 +65,6 @@ public class DoseCompliancySummaryReport extends VMPBaseReportManager {
 
   @Override
   public String getVersion() {
-    return "1.3";
-  }
-
-  @Override
-  protected SqlDataSetDefinition getOrCreateSqlDataSetDefinition() {
-    final DataSetDefinitionService dataSetDefinitionService = Context.getService(DataSetDefinitionService.class);
-    final String sqlDataDefinitionUuid = "815c6883-78f9-4774-9d76-8dd25244b855";
-
-    SqlDataSetDefinition sqlDataSetDefinition =
-        (SqlDataSetDefinition) dataSetDefinitionService.getDefinitionByUuid(sqlDataDefinitionUuid);
-
-    if (sqlDataSetDefinition == null) {
-      sqlDataSetDefinition = new SqlDataSetDefinition();
-      sqlDataSetDefinition.setUuid(sqlDataDefinitionUuid);
-      sqlDataSetDefinition.setName(getName());
-      sqlDataSetDefinition.addParameters(getParameters());
-      sqlDataSetDefinition.setSqlQuery("SELECT * FROM openmrs.DoseCompliancyAggregate;");
-      sqlDataSetDefinition = dataSetDefinitionService.saveDefinition(sqlDataSetDefinition);
-    }
-
-    return sqlDataSetDefinition;
+    return "1.4";
   }
 }

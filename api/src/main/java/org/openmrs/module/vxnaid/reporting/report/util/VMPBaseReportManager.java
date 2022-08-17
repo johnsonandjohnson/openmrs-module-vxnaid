@@ -10,7 +10,9 @@
 
 package org.openmrs.module.vxnaid.reporting.report.util;
 
+import org.openmrs.api.context.Context;
 import org.openmrs.module.reporting.dataset.definition.SqlDataSetDefinition;
+import org.openmrs.module.reporting.dataset.definition.service.DataSetDefinitionService;
 import org.openmrs.module.reporting.evaluation.parameter.Mapped;
 import org.openmrs.module.reporting.report.ReportDesign;
 import org.openmrs.module.reporting.report.ReportDesignResource;
@@ -19,6 +21,14 @@ import org.openmrs.module.reporting.report.manager.BaseReportManager;
 import org.openmrs.module.reporting.report.renderer.ExcelTemplateRenderer;
 
 public abstract class VMPBaseReportManager extends BaseReportManager {
+  private final String sqlDataDefinitionUuid;
+  private final String dataSetName;
+
+  protected VMPBaseReportManager(final String sqlDataDefinitionUuid, final String dataSetName) {
+    this.sqlDataDefinitionUuid = sqlDataDefinitionUuid;
+    this.dataSetName = dataSetName;
+  }
+
   @Override
   public ReportDefinition constructReportDefinition() {
     final ReportDefinition reportDefinition = new ReportDefinition();
@@ -26,11 +36,28 @@ public abstract class VMPBaseReportManager extends BaseReportManager {
     reportDefinition.setName(getName());
     reportDefinition.setDescription(getDescription());
     reportDefinition.setParameters(getParameters());
-    reportDefinition.addDataSetDefinition(getName(), Mapped.mapStraightThrough(getOrCreateSqlDataSetDefinition()));
+    reportDefinition.addDataSetDefinition(getName(),
+        Mapped.mapStraightThrough(getOrCreateSqlDataSetDefinition(sqlDataDefinitionUuid)));
     return reportDefinition;
   }
 
-  protected abstract SqlDataSetDefinition getOrCreateSqlDataSetDefinition();
+  protected SqlDataSetDefinition getOrCreateSqlDataSetDefinition(String sqlDataDefinitionUuid) {
+    final DataSetDefinitionService dataSetDefinitionService = Context.getService(DataSetDefinitionService.class);
+    SqlDataSetDefinition sqlDataSetDefinition =
+        (SqlDataSetDefinition) dataSetDefinitionService.getDefinitionByUuid(sqlDataDefinitionUuid);
+
+    if (sqlDataSetDefinition == null) {
+      sqlDataSetDefinition = new SqlDataSetDefinition();
+      sqlDataSetDefinition.setUuid(sqlDataDefinitionUuid);
+      sqlDataSetDefinition.setName(dataSetName);
+      sqlDataSetDefinition.setDescription("SQL DataSet created for Report: " + getName());
+      sqlDataSetDefinition.addParameters(getParameters());
+      sqlDataSetDefinition.setSqlQuery("SELECT * FROM openmrs." + dataSetName + ";");
+      sqlDataSetDefinition = dataSetDefinitionService.saveDefinition(sqlDataSetDefinition);
+    }
+
+    return sqlDataSetDefinition;
+  }
 
   protected ReportDesignResource createXLSXReportDesignResource() {
     final ReportDesignResource reportDesignResource = new ReportDesignResource();

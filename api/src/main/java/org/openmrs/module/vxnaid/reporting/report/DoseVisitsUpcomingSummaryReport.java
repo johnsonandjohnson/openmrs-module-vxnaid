@@ -10,15 +10,12 @@
 
 package org.openmrs.module.vxnaid.reporting.report;
 
-import org.openmrs.api.context.Context;
-import org.openmrs.module.vxnaid.reporting.report.util.VMPBaseReportManager;
-import org.openmrs.module.reporting.dataset.definition.SqlDataSetDefinition;
-import org.openmrs.module.reporting.dataset.definition.service.DataSetDefinitionService;
 import org.openmrs.module.reporting.evaluation.parameter.Parameter;
 import org.openmrs.module.reporting.report.ReportDesign;
 import org.openmrs.module.reporting.report.ReportDesignResource;
 import org.openmrs.module.reporting.report.definition.ReportDefinition;
 import org.openmrs.module.reporting.report.util.ReportUtil;
+import org.openmrs.module.vxnaid.reporting.report.util.VMPBaseReportManager;
 
 import java.util.List;
 
@@ -26,6 +23,12 @@ import static java.util.Collections.emptyList;
 import static java.util.Collections.singletonList;
 
 public class DoseVisitsUpcomingSummaryReport extends VMPBaseReportManager {
+  private static final String DATA_SET_NAME = "UpcomingDoseAgg";
+
+  protected DoseVisitsUpcomingSummaryReport() {
+    super("a52fdd98-4d5e-4e2f-88eb-d3fd4d39d9d6", DATA_SET_NAME);
+  }
+
   @Override
   public String getUuid() {
     return "2c3b1f09-92c8-493e-8c7b-a0b3cb14d051";
@@ -50,7 +53,7 @@ public class DoseVisitsUpcomingSummaryReport extends VMPBaseReportManager {
   public List<ReportDesign> constructReportDesigns(ReportDefinition reportDefinition) {
     final ReportDesign design = createExcelTemplateDesign();
     design.setReportDefinition(reportDefinition);
-    design.addPropertyValue("repeatingSections", "sheet:2,row:2,dataset:DosingVisitsAgg");
+    design.addPropertyValue("repeatingSections", "sheet:2,row:2,dataset:" + DATA_SET_NAME);
 
     final ReportDesignResource resource = createXLSXReportDesignResource();
     resource.setName("DoseUpcomingVisitsAggTemplate");
@@ -62,29 +65,6 @@ public class DoseVisitsUpcomingSummaryReport extends VMPBaseReportManager {
 
   @Override
   public String getVersion() {
-    return "1.2";
-  }
-
-  @Override
-  protected SqlDataSetDefinition getOrCreateSqlDataSetDefinition() {
-    final DataSetDefinitionService dataSetDefinitionService = Context.getService(DataSetDefinitionService.class);
-    final String sqlDataDefinitionUuid = "a52fdd98-4d5e-4e2f-88eb-d3fd4d39d9d6";
-
-    SqlDataSetDefinition sqlDataSetDefinition =
-        (SqlDataSetDefinition) dataSetDefinitionService.getDefinitionByUuid(sqlDataDefinitionUuid);
-
-    if (sqlDataSetDefinition == null) {
-      sqlDataSetDefinition = new SqlDataSetDefinition();
-      sqlDataSetDefinition.setUuid(sqlDataDefinitionUuid);
-      sqlDataSetDefinition.setName(getName());
-      sqlDataSetDefinition.setDescription(
-          "Aggregation table of dosing visits on Report date` , `Visit Status` , `Dose Number` , `Vaccine` , `Clinic` , " +
-              "`Scheduled Date`");
-      sqlDataSetDefinition.addParameters(getParameters());
-      sqlDataSetDefinition.setSqlQuery("SELECT * FROM openmrs.UpcomingDoseAgg;");
-      sqlDataSetDefinition = dataSetDefinitionService.saveDefinition(sqlDataSetDefinition);
-    }
-
-    return sqlDataSetDefinition;
+    return "1.3";
   }
 }

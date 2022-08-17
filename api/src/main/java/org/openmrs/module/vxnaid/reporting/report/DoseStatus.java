@@ -11,7 +11,6 @@
 package org.openmrs.module.vxnaid.reporting.report;
 
 import org.openmrs.api.context.Context;
-import org.openmrs.module.vxnaid.reporting.report.util.VMPBaseReportManager;
 import org.openmrs.module.reporting.dataset.definition.SqlDataSetDefinition;
 import org.openmrs.module.reporting.dataset.definition.service.DataSetDefinitionService;
 import org.openmrs.module.reporting.evaluation.parameter.Parameter;
@@ -19,6 +18,7 @@ import org.openmrs.module.reporting.report.ReportDesign;
 import org.openmrs.module.reporting.report.ReportDesignResource;
 import org.openmrs.module.reporting.report.definition.ReportDefinition;
 import org.openmrs.module.reporting.report.util.ReportUtil;
+import org.openmrs.module.vxnaid.reporting.report.util.VMPBaseReportManager;
 
 import java.util.List;
 
@@ -26,6 +26,12 @@ import static java.util.Collections.emptyList;
 import static java.util.Collections.singletonList;
 
 public class DoseStatus extends VMPBaseReportManager {
+  private static final String DATA_SET_NAME = "DoseData";
+
+  protected DoseStatus() {
+    super("66e894f1-21af-4e69-bfd7-38913f4265f2", DATA_SET_NAME);
+  }
+
   @Override
   public String getUuid() {
     return "5b6d6e70-ae35-4e0b-827a-be1bc1895813";
@@ -50,7 +56,7 @@ public class DoseStatus extends VMPBaseReportManager {
   public List<ReportDesign> constructReportDesigns(ReportDefinition reportDefinition) {
     final ReportDesign design = createExcelTemplateDesign();
     design.setReportDefinition(reportDefinition);
-    design.addPropertyValue("repeatingSections", "sheet:2,row:2,dataset:DosingData");
+    design.addPropertyValue("repeatingSections", "sheet:2,row:2,dataset:" + DATA_SET_NAME);
 
     final ReportDesignResource resource = createXLSXReportDesignResource();
     resource.setName("DoseDataV1Template");
@@ -62,13 +68,12 @@ public class DoseStatus extends VMPBaseReportManager {
 
   @Override
   public String getVersion() {
-    return "1.2";
+    return "1.3";
   }
 
   @Override
-  protected SqlDataSetDefinition getOrCreateSqlDataSetDefinition() {
+  protected SqlDataSetDefinition getOrCreateSqlDataSetDefinition(String sqlDataDefinitionUuid) {
     final DataSetDefinitionService dataSetDefinitionService = Context.getService(DataSetDefinitionService.class);
-    final String sqlDataDefinitionUuid = "66e894f1-21af-4e69-bfd7-38913f4265f2";
 
     SqlDataSetDefinition sqlDataSetDefinition =
         (SqlDataSetDefinition) dataSetDefinitionService.getDefinitionByUuid(sqlDataDefinitionUuid);
@@ -76,7 +81,8 @@ public class DoseStatus extends VMPBaseReportManager {
     if (sqlDataSetDefinition == null) {
       sqlDataSetDefinition = new SqlDataSetDefinition();
       sqlDataSetDefinition.setUuid(sqlDataDefinitionUuid);
-      sqlDataSetDefinition.setName(getName());
+      sqlDataSetDefinition.setName(DATA_SET_NAME);
+      sqlDataSetDefinition.setDescription("SQL DataSet created for Report: " + getName());
       sqlDataSetDefinition.addParameters(getParameters());
       sqlDataSetDefinition.setSqlQuery(
           "SELECT * FROM openmrs.DoseData WHERE `Visit Status`='OCCURRED' and `name`='Dosing' and `Dose Number`!= 'Dose " +
