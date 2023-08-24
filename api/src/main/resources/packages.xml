@@ -36,8 +36,8 @@
         </org.openmrs.module.emrapi.metadata.MetadataPackageConfig>
         <org.openmrs.module.emrapi.metadata.MetadataPackageConfig>
             <filenameBase>06_Visit_Types</filenameBase>
-            <groupUuid>ac0ee001-ec63-41fb-949a-31a7e786e496</groupUuid>
-            <version>2</version>
+            <groupUuid>4ebb0c00-6a63-44e7-b343-e5d9f9cc5b45</groupUuid>
+            <version>3</version>
             <importMode>MIRROR</importMode>
         </org.openmrs.module.emrapi.metadata.MetadataPackageConfig>
         <org.openmrs.module.emrapi.metadata.MetadataPackageConfig>
