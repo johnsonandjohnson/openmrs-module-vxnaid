@@ -46,9 +46,9 @@
         <appuiVersion>1.7</appuiVersion>
         <jacocoVersion>0.8.2</jacocoVersion>
         <surefireVersion>2.17</surefireVersion>
-        <messagesVersion>1.5.7</messagesVersion>
-        <cflcore>1.9.1</cflcore>
-        <cfl>1.3.1</cfl>
+        <messagesVersion>1.7.0</messagesVersion>
+        <cflcore>1.11.1</cflcore>
+        <cfl>1.4.0</cfl>
     </properties>
 
     <dependencyManagement>
