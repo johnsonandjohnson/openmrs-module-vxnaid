@@ -22,7 +22,7 @@ import static java.util.Collections.singleton;
 public class RolesMetadataBundle extends VersionedMetadataBundle {
   @Override
   public int getVersion() {
-    return 1;
+    return 2;
   }
 
   @Override
@@ -32,7 +32,7 @@ public class RolesMetadataBundle extends VersionedMetadataBundle {
 
   @Override
   protected void installNewVersion() {
-    install(CoreConstructors.role("Operator", "", emptySet(), emptySet()));
+    install(CoreConstructors.role("Operator", "", emptySet(), singleton("Get Providers")));
     install(CoreConstructors.role("Sync Admin", "", singleton("Privilege Level: Doctor"), new HashSet<>(
         Arrays.asList("Get Devices", "Manage Devices", "Get Device Attribute Types", "Manage Device Attribute Types",
             "Get Licenses", "Get License Types"))));
