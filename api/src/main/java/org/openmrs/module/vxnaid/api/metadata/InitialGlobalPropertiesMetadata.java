@@ -11,8 +11,7 @@
 package org.openmrs.module.vxnaid.api.metadata;
 
 import org.openmrs.module.cflcore.CFLConstants;
-import org.openmrs.module.cflcore.api.constant.CountryPropertyConstants;
-import org.openmrs.module.messages.api.util.CountryPropertyUtils;
+import org.openmrs.module.cflcore.api.util.GlobalPropertiesConstants;
 import org.openmrs.module.metadatadeploy.bundle.VersionedMetadataBundle;
 
 import static org.openmrs.module.metadatadeploy.bundle.CoreConstructors.globalProperty;
@@ -224,7 +223,11 @@ public class InitialGlobalPropertiesMetadata extends VersionedMetadataBundle {
 
   @Override
   protected void installEveryTime() {
-    // Install only once, when version changes
+    // Ensures the Vxnaid app works correctly with CFL BE
+    install(globalProperty(GlobalPropertiesConstants.SHOULD_CREATE_FIRST_VISIT.getKey(),
+        GlobalPropertiesConstants.SHOULD_CREATE_FIRST_VISIT.getDescription(), "false"));
+    install(globalProperty(GlobalPropertiesConstants.SHOULD_CREATE_FUTURE_VISITS.getKey(),
+        GlobalPropertiesConstants.SHOULD_CREATE_FUTURE_VISITS.getDescription(), "true"));
   }
 
   @Override
@@ -250,7 +253,5 @@ public class InitialGlobalPropertiesMetadata extends VersionedMetadataBundle {
         CFLConstants.VACCINATION_VISIT_LISTENER_NAME));
     install(globalProperty(CFLConstants.VACCINATION_INFORMATION_ENABLED_KEY,
         CFLConstants.VACCINATION_INFORMATION_ENABLED_KEY_DESCRIPTION, VACCINATION_INFORMATION_ENABLED_VMP_VALUE));
-
-    CountryPropertyUtils.setDefaultCountrySetting(CountryPropertyConstants.SHOULD_CREATE_FUTURE_VISIT_PROP_NAME, "true");
   }
 }
