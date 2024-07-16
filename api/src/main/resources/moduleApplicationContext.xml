@@ -100,4 +100,8 @@
           class="org.openmrs.module.vxnaid.api.metadata.InitialGlobalPropertiesMetadata"/>
     <bean id="cfl-vmp-OpenMRSConfigurationBundle"
           class="org.openmrs.module.vxnaid.api.metadata.OpenMRSConfigurationBundle"/>
+    <bean id="cfl-vmp-InitialPatientIdentifierTypesMetadata"
+          class="org.openmrs.module.vxnaid.api.metadata.InitialPatientIdentifierTypesMetadata"/>
+    <bean id="cfl-vmp-InitialPersonAttributeTypesMetadata"
+          class="org.openmrs.module.vxnaid.api.metadata.InitialPersonAttributeTypesMetadata"/>
 </beans>
