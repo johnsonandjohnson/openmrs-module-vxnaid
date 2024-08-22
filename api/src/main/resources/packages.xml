@@ -42,8 +42,8 @@
         </org.openmrs.module.emrapi.metadata.MetadataPackageConfig>
         <org.openmrs.module.emrapi.metadata.MetadataPackageConfig>
             <filenameBase>07_Visit_Attribute_Types</filenameBase>
-            <groupUuid>5486afa8-b64c-4cbb-a11a-bdce6c3afc67</groupUuid>
-            <version>1</version>
+            <groupUuid>bcf4b757-b0df-4a06-9d61-d0daba5737a1</groupUuid>
+            <version>2</version>
             <importMode>MIRROR</importMode>
         </org.openmrs.module.emrapi.metadata.MetadataPackageConfig>
         <org.openmrs.module.emrapi.metadata.MetadataPackageConfig>
