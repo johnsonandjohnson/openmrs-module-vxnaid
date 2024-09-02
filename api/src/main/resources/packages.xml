@@ -88,5 +88,11 @@
             <version>1</version>
             <importMode>MIRROR</importMode>
         </org.openmrs.module.emrapi.metadata.MetadataPackageConfig>
+        <org.openmrs.module.emrapi.metadata.MetadataPackageConfig>
+            <filenameBase>16_Referral_concepts</filenameBase>
+            <groupUuid>bb8093f6-6fdb-4630-b0fb-67bf2053b8c2</groupUuid>
+            <version>1</version>
+            <importMode>MIRROR</importMode>
+        </org.openmrs.module.emrapi.metadata.MetadataPackageConfig>
     </packages>
 </org.openmrs.module.emrapi.metadata.MetadataPackagesConfig>
