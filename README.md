@@ -1,5 +1,3 @@
-openmrs-module-vxnaid
-==========================
+# Connect for Life has moved
 
-The module which contains metadata, customizations and anything which is required by the Vxnaid Distribution and is not or
- is not supposed to be compatible with other distributions.
+The CFL distribution and its all repositories can now be found under its own [organization](https://github.com/ConnectForLife/).
